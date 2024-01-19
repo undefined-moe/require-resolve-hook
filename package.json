@@ -1,5 +1,5 @@
 {
-  "name": "require-resolve-hook",
+  "name": "@undefined-moe/require-resolve-hook",
   "version": "1.1.0",
   "description": "Module to hook into the Node.js require and require.resolve function",
   "author": "imcuttle <imcuttle@163.com>",
@@ -53,7 +53,7 @@
   "main": "lib",
   "types": "types",
   "license": "MIT",
-  "repository": "imcuttle/require-resolve-hook",
+  "repository": "undefined-moe/require-resolve-hook",
   "module": "es",
   "commitlint": {
     "extends": [

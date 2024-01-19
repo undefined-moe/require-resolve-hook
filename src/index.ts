@@ -86,8 +86,12 @@ const requireResolveHook = (match: Match, onResolve: OnResolve, options: Options
   return {
     bypass: (fn: () => any): ReturnType<typeof fn> => {
       unhook()
-      const result = fn()
-      hook()
+      let result: string
+      try {
+        result = fn()
+      } finally {
+        hook()
+      }
       return result
     },
     unhook: () => unhook()
@@ -97,8 +101,12 @@ const requireResolveHook = (match: Match, onResolve: OnResolve, options: Options
 export const bypass = (fn: () => any): ReturnType<typeof fn> => {
   const _resolveFilename = Module._resolveFilename
   Module._resolveFilename = Module.__require_resolve_hook_origin_resolveFilename__ || Module._resolveFilename
-  const result = fn()
-  Module._resolveFilename = _resolveFilename
+  let result: string
+  try {
+    result = fn()
+  } finally {
+    Module._resolveFilename = _resolveFilename
+  }
   return result
 }
 
